@@ -1,10 +1,14 @@
-<<<<<<< HEAD
+
 # XeBid-Team-A
 This repository has been created by batch of Xebia's 2019 Summer Interns for creation of capstone project of bidding application.
 =======
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+=======
+## XeBid
 
-## Available Scripts
+
+This repository has been created by batch of Xebia's 2019 Summer Interns for creation of capstone project of bidding application.
+
 
 In the project directory, you can run:
 
@@ -70,4 +74,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
->>>>>>> b58fba74ccfd8fcaa5861c60138a1e30e5b433fd
+
+=======
+__Work in Progress__
+
