@@ -8,7 +8,8 @@ import CommonButton from '../../Common/Button';
 const useStyles = makeStyles(theme => ({
   appBar: {
     flexGrow:1,
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: theme.zIndex.drawer + 2,
+    background:'#6D2C5F',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -44,5 +45,4 @@ export default props => {
     </AppBar>
   );
 };
-
 

@@ -5,8 +5,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import PeopleIcon from '@material-ui/icons/People'
+import EventIcon from '@material-ui/icons/Event';
+import ViewIcon from '@material-ui/icons/Visibility'
+import AddCircle from '@material-ui/icons/AddCircle'
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from '@material-ui/core/Collapse';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,57 +21,85 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
 
 export default props => {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   function handleListItemClick(event, index) {
     setSelectedIndex(index);
   }
 
+  function handleClick() {
+    setOpen(!open);
+  }
+
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="Main mailbox folders">
+
         <ListItem
           button
           selected={selectedIndex === 0}
           onClick={event => handleListItemClick(event, 0)}
         >
           <ListItemIcon>
-            <InboxIcon />
+            <DashboardIcon/>
           </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <ListItemText primary="Dashboard" />
         </ListItem>
+
         <ListItem
           button
           selected={selectedIndex === 1}
           onClick={event => handleListItemClick(event, 1)}
         >
           <ListItemIcon>
-            <DraftsIcon />
+            <EventIcon/>
           </ListItemIcon>
-          <ListItemText primary="Drafts" />
+          <ListItemText primary="Event Space Mgmt." />
         </ListItem>
+
+        <ListItem button onClick={handleClick}>
+          <ListItemIcon>
+            <PeopleIcon/>
+          </ListItemIcon>
+          <ListItemText primary="User Mgmt." />
+        {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItem 
+            button 
+            className={classes.nested}
+            selected={selectedIndex === 2}
+            onClick={event => handleListItemClick(event, 2)}
+            >
+              <ListItemIcon>
+                <AddCircle/>
+              </ListItemIcon>
+              <ListItemText primary="Add Users" />
+            </ListItem>
+            <ListItem 
+            button 
+            className={classes.nested}
+            selected={selectedIndex === 3}
+            onClick={event => handleListItemClick(event, 3)}
+            >
+              <ListItemIcon>
+                <ViewIcon/>
+              </ListItemIcon>
+              <ListItemText primary="View Users" />
+            </ListItem>
+          </List>
+        </Collapse>
       </List>
-      <Divider />
-      <List component="nav" aria-label="Secondary mailbox folder">
-        <ListItem
-          button
-          selected={selectedIndex === 2}
-          onClick={event => handleListItemClick(event, 2)}
-        >
-          <ListItemText primary="Trash" />
-        </ListItem>
-        <ListItem
-          button
-          selected={selectedIndex === 3}
-          onClick={event => handleListItemClick(event, 3)}
-        >
-          <ListItemText primary="Spam" />
-        </ListItem>
-      </List>
+        <Divider />
     </div>
   );
 }

@@ -28,7 +28,7 @@ export default props => {
 
       <Sidedrawer drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
 
-      {/* <Footer /> */}
+      <Footer />
 
     </div> 
   );

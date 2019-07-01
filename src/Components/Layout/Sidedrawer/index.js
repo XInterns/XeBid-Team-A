@@ -1,8 +1,9 @@
-import React from 'react'
-import {Drawer,Divider,Hidden} from '@material-ui/core'
+import React from 'react';
+import {Drawer,Divider,Hidden} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
-import SelectList from '../Sidedrawer-List'
+import SelectList from '../Sidedrawer-List';
+import Avatar from '../../Common/Avatar';
 
 const drawerWidth = 240;
 
@@ -16,6 +17,11 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
+  },
+  drawerTop: {
+    display:'flex',
+    alignItems: 'center',
+    justifyContent:'space-around',
   },
   content: {
     flexGrow: 1,
@@ -32,7 +38,9 @@ export default props => {
       <Hidden xsDown>
         <div className={classes.toolbar}/>
       </Hidden>
-      hello
+      {/* <div className={classes.drawerTop}> */}
+        <Avatar/>
+      {/* </div> */}
       <Divider />  
       <SelectList/>   
     </div>

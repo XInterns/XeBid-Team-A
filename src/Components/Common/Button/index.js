@@ -1,49 +1,30 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { grey, red } from '@material-ui/core/colors';
+import {Button} from '@material-ui/core/';
+
+const ColorButton = withStyles(theme => ({
+  root: {
+    color: theme.palette.getContrastText(grey[50]),
+    backgroundColor: grey[50],
+    '&:hover': {
+      backgroundColor: red[500],
+    },
+  },
+}))(Button);
 
 const useStyles = makeStyles(theme => ({
-  button: {
+  margin: {
     margin: theme.spacing(1),
-  },
-  input: {
-    display: 'none',
   },
 }));
 
 export default function ContainedButtons() {
   const classes = useStyles();
 
-  return (
-    
-      <Button variant="contained" className={classes.button}>
+  return (    
+      <ColorButton variant="contained" color="primary" className={classes.margin}>
         Logout
-      </Button>
-  );
-      {/* <Button variant="contained" color="primary" className={classes.button}>
-        Primary
-      </Button>
-      <Button variant="contained" color="secondary" className={classes.button}>
-        Secondary
-      </Button>
-      <Button variant="contained" color="secondary" disabled className={classes.button}>
-        Disabled
-      </Button>
-      <Button variant="contained" href="#contained-buttons" className={classes.button}>
-        Link
-      </Button>
-      <input
-        accept="image/*"
-        className={classes.input}
-        id="contained-button-file"
-        multiple
-        type="file"
-      />
-      <label htmlFor="contained-button-file">
-        <Button variant="contained" component="span" className={classes.button}>
-          Upload
-        </Button>
-      </label>
-    </div> */}
-  
+      </ColorButton>
+  );  
 }
