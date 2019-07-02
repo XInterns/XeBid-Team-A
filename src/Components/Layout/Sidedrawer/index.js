@@ -1,5 +1,5 @@
 import React from 'react';
-import {Drawer,Divider,Hidden} from '@material-ui/core';
+import {Drawer,Divider,Hidden,Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 import SelectList from '../Sidedrawer-List';
@@ -38,9 +38,7 @@ export default props => {
       <Hidden xsDown>
         <div className={classes.toolbar}/>
       </Hidden>
-      {/* <div className={classes.drawerTop}> */}
         <Avatar/>
-      {/* </div> */}
       <Divider />  
       <SelectList/>   
     </div>
@@ -80,6 +78,9 @@ export default props => {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <Typography variant="h6">
+            Let's do this thing alright
+        </Typography>
       </main>
   </>
   )
