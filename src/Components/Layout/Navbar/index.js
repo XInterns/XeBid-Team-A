@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar,Toolbar,IconButton,Typography} from '@material-ui/core';
+import {AppBar,Toolbar,IconButton,Box} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles} from '@material-ui/core/styles';
 
@@ -28,6 +28,7 @@ export default props => {
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
+  
         <IconButton
           color="inherit"
           aria-label="Open drawer"
@@ -37,9 +38,8 @@ export default props => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h5" className={classes.title}>
-          XeBid
-        </Typography>
+        <Box className={classes.title}>
+        <img src="https://www.ciol.com/wp-content/uploads/2019/04/Xebia-brings-Survey-on-Digitization.jpg" alt="Kitten" height="40" width="90" /></Box>
         <CommonButton/>
       </Toolbar>
     </AppBar>

@@ -1,30 +1,35 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { grey, red } from '@material-ui/core/colors';
-import {Button} from '@material-ui/core/';
+import clsx from 'clsx';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import LogoutIcon from '@material-ui/icons/PowerSettingsNew';
 
-const ColorButton = withStyles(theme => ({
-  root: {
-    color: theme.palette.getContrastText(grey[50]),
-    backgroundColor: grey[50],
-    '&:hover': {
-      backgroundColor: red[500],
-    },
-  },
-}))(Button);
+
 
 const useStyles = makeStyles(theme => ({
-  margin: {
+  button: {
     margin: theme.spacing(1),
+  },
+  leftIcon: {
+    marginRight: theme.spacing(1),
+  },
+  rightIcon: {
+    marginLeft: theme.spacing(1),
+  },
+  iconSmall: {
+    fontSize: 20,
   },
 }));
 
-export default function ContainedButtons() {
+export default function IconLabelButtons() {
   const classes = useStyles();
 
-  return (    
-      <ColorButton variant="contained" color="primary" className={classes.margin}>
+  return (
+    <div>
+      <Button variant="contained"color="secondary" size="small" className={classes.button}>
+        <LogoutIcon className={clsx(classes.leftIcon, classes.iconSmall)} />
         Logout
-      </ColorButton>
-  );  
+      </Button>
+    </div>
+  );
 }
