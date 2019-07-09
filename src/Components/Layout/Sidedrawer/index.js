@@ -1,9 +1,11 @@
 import React from 'react';
-import {Drawer,Divider,Hidden,Typography} from '@material-ui/core';
+import {Drawer,Divider,Hidden} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 import SelectList from '../Sidedrawer-List';
 import Avatar from '../../Common/Avatar';
+
+
 
 const drawerWidth = 240;
 
@@ -18,15 +20,7 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     width: drawerWidth,
   },
-  drawerTop: {
-    display:'flex',
-    alignItems: 'center',
-    justifyContent:'space-around',
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
+
 }));
 
 export default props => {
@@ -45,7 +39,6 @@ export default props => {
   );
   
   return(
-    <>
       <nav className={classes.drawer} aria-label="Mailbox folders">
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
@@ -76,12 +69,5 @@ export default props => {
           </Drawer>
         </Hidden>
       </nav>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Typography variant="h6">
-            Let's do this thing alright
-        </Typography>
-      </main>
-  </>
-  )
+  );
 }

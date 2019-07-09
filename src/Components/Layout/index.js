@@ -4,7 +4,7 @@ import { makeStyles} from '@material-ui/core/styles';
 
 import NavBar from './Navbar';
 import Sidedrawer from './Sidedrawer';
-import Footer from './Footer';
+import MainContent from './MainContent';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,7 +28,9 @@ export default props => {
 
       <Sidedrawer drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
 
-      <Footer />
+      <MainContent/>
+
+      {/* <Footer /> */}
 
     </div> 
   );
