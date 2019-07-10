@@ -1,18 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import PeopleIcon from '@material-ui/icons/People'
-import EventIcon from '@material-ui/icons/Event';
-import ViewIcon from '@material-ui/icons/Visibility'
-import AddCircle from '@material-ui/icons/AddCircle'
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import Collapse from '@material-ui/core/Collapse';
+import {Divider,List,ListItem,ListItemIcon,ListItemText, Collapse} from '@material-ui/core/';
+import {connect} from 'react-redux';
+import {Dashboard as DashboardIcon, People as PeopleIcon, Event as EventIcon, Visibility as ViewIcon, AddCircle, ExpandLess, ExpandMore} from '@material-ui/icons/';
+// import PeopleIcon from '@material-ui/icons/People'
+// import EventIcon from '@material-ui/icons/Event';
+// import ViewIcon from '@material-ui/icons/Visibility'
+// import AddCircle from '@material-ui/icons/AddCircle'
+// import ExpandLess from '@material-ui/icons/ExpandLess';
+// import ExpandMore from '@material-ui/icons/ExpandMore';
+
+import {selectOption} from '../../../Actions';
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,16 +24,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default props => {
+const SidedrawerList = props => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  function handleListItemClick(event, index) {
+  const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+    props.selectOption(index);
   }
 
-  function handleClick() {
+  const handleClick = () => {
     setOpen(!open);
   }
 
@@ -104,3 +103,4 @@ export default props => {
   );
 }
 
+export default connect(null,{selectOption})(SidedrawerList);
