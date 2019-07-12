@@ -40,7 +40,7 @@ export default props => {
         </IconButton>
         <Box className={classes.title}>
         <img src="https://www.ciol.com/wp-content/uploads/2019/04/Xebia-brings-Survey-on-Digitization.jpg" alt="Kitten" height="40" width="90" /></Box>
-        <CommonButton/>
+        <CommonButton value='logout'/>
       </Toolbar>
     </AppBar>
   );

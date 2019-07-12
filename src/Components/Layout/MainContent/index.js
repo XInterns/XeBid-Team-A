@@ -1,9 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-
 import {makeStyles} from '@material-ui/core/styles';
 import { Typography, Paper } from '@material-ui/core';
+
+import AddUsers from '../../Admin/CreateUsers';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,16 +24,12 @@ const MainContent = props =>  {
     switch (option){
       case 0:
         return <Typography variant='h3'>Dashboard</Typography>
-        break;
       case 1:
         return <Typography variant='h3'>Event Management</Typography>
-        break;
       case 2:
-        return <Typography variant='h3'>Create Usert</Typography>
-        break;
+        return <AddUsers/>
       case 3:
-        return <Typography variant='h3'>Delete User</Typography>
-        break;
+        return <Typography variant='h3'>View Users</Typography>
     }
   }
 

@@ -1,10 +1,6 @@
 import React from 'react';
-import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import LogoutIcon from '@material-ui/icons/PowerSettingsNew';
-
-
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -21,14 +17,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function IconLabelButtons() {
+export default function IconLabelButtons(props) {
   const classes = useStyles();
 
   return (
     <div>
-      <Button variant="contained"color="secondary" size="small" className={classes.button}>
-        <LogoutIcon className={clsx(classes.leftIcon, classes.iconSmall)} />
-        Logout
+      <Button variant="contained"color="secondary" size="small" className={classes.button} onClick={props.createUser}>
+        {props.value}
       </Button>
     </div>
   );
