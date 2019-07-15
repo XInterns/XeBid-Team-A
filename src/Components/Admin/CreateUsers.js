@@ -120,7 +120,7 @@ export default function OutlinedTextFields() {
               input={<OutlinedInput labelWidth={labelWidth} name="role" id="role" />}
             >
               <MenuItem value={1}>Admin</MenuItem>
-              <MenuItem value={2}>Workspace-Manager</MenuItem>
+              <MenuItem value={2}>Eventspace-Manager</MenuItem>
               <MenuItem value={3}>Team Owner</MenuItem>
               <MenuItem value={4}>Participant</MenuItem>
               <MenuItem value={5}>Audience</MenuItem>

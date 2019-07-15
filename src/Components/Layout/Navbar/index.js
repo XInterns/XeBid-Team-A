@@ -28,8 +28,8 @@ export default props => {
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
-  
-        <IconButton
+
+        {/* <IconButton
           color="inherit"
           aria-label="Open drawer"
           edge="start"
@@ -37,7 +37,7 @@ export default props => {
           className={classes.menuButton}
         >
           <MenuIcon />
-        </IconButton>
+        </IconButton> */}
         <Box className={classes.title}>
         <img src="https://www.ciol.com/wp-content/uploads/2019/04/Xebia-brings-Survey-on-Digitization.jpg" alt="Kitten" height="40" width="90" /></Box>
         <CommonButton value='logout'/>

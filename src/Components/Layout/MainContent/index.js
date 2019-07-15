@@ -4,6 +4,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import { Typography, Paper } from '@material-ui/core';
 
 import AddUsers from '../../Admin/CreateUsers';
+import EventSpaceManagement from '../../Admin/EventSpaceManagement';
 
 
 const useStyles = makeStyles(theme => ({
@@ -25,7 +26,7 @@ const MainContent = props =>  {
       case 0:
         return <Typography variant='h3'>Dashboard</Typography>
       case 1:
-        return <Typography variant='h3'>Event Management</Typography>
+        return <EventSpaceManagement/>
       case 2:
         return <AddUsers/>
       case 3:
