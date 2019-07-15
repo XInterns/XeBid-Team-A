@@ -2,8 +2,10 @@ import React from 'react';
 import {AppBar,Toolbar,IconButton,Box} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles} from '@material-ui/core/styles';
+import {Link} from 'react-router-dom';
 
-import CommonButton from '../../Common/Button';
+import SignedInLink from '../SignedInLinks';
+import SignedOutLink from '../SignedOutLinks';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -39,8 +41,13 @@ export default props => {
           <MenuIcon />
         </IconButton> */}
         <Box className={classes.title}>
-        <img src="https://www.ciol.com/wp-content/uploads/2019/04/Xebia-brings-Survey-on-Digitization.jpg" alt="Kitten" height="40" width="90" /></Box>
-        <CommonButton value='logout'/>
+          <Link to='/'>
+            <img src="https://www.ciol.com/wp-content/uploads/2019/04/Xebia-brings-Survey-on-Digitization.jpg" alt="XEBIA LOGO" height="40" width="90" />
+          </Link>
+        </Box>
+        <SignedOutLink/>
+        <SignedInLink/>
+        {/* <CommonButton value='logout'/> */}
       </Toolbar>
     </AppBar>
   );

@@ -59,7 +59,7 @@ export default function OutlinedTextFields() {
   return (
     <form className={classes.container}  noValidate autoComplete="off">
       <div className={classes.subContainer}>
-        <Typography variant='h3'>Create Users</Typography>
+        {/* <Typography variant='h3'>Create Users</Typography> */}
         <div>
           <TextField
             required
@@ -110,6 +110,28 @@ export default function OutlinedTextFields() {
         </div>
 
         <div>
+          <TextField
+            required
+            id="outlined-password-input"
+            label="Password"
+            className={classes.textField}
+            type="password"
+            margin="normal"
+            variant="outlined"
+          />
+
+          <TextField
+            required
+            id="outlined-confirm-password-input"
+            label="Confirm Password"
+            className={classes.textField}
+            type="confirm-password"
+            margin="normal"
+            variant="outlined"
+          />
+        </div>
+
+        <div>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel ref={inputLabel} htmlFor="outlined-role-simple">
               Role
@@ -119,15 +141,15 @@ export default function OutlinedTextFields() {
               onChange={handleChange}
               input={<OutlinedInput labelWidth={labelWidth} name="role" id="role" />}
             >
-              <MenuItem value={1}>Admin</MenuItem>
+              {/* <MenuItem value={1}>Admin</MenuItem>
               <MenuItem value={2}>Eventspace-Manager</MenuItem>
-              <MenuItem value={3}>Team Owner</MenuItem>
+              <MenuItem value={3}>Team Owner</MenuItem> */}
               <MenuItem value={4}>Participant</MenuItem>
               <MenuItem value={5}>Audience</MenuItem>
             </Select>
           </FormControl> 
         </div>
-        <CommonButton value="ADD" createUser={handleSubmit}/ >
+        {/* <CommonButton value="ADD" createUser={handleSubmit}/ > */}
       </div>
     </form>
   );

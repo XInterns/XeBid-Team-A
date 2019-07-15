@@ -22,7 +22,7 @@ export default function IconLabelButtons(props) {
 
   return (
     <div>
-      <Button variant="contained" color="secondary" size="small" className={classes.button} onClick={props.createUser}>
+      <Button variant="contained" color={props.color} size="small" className={classes.button} onClick={props.createUser}>
         {props.value}
       </Button>
     </div>
