@@ -3,6 +3,7 @@ import {AppBar,Toolbar,IconButton,Box} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles} from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import SignedInLink from '../SignedInLinks';
 import SignedOutLink from '../SignedOutLinks';
@@ -24,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default props => {
+const Navbar= props => {
   const classes = useStyles();
 
   return (
@@ -47,9 +48,16 @@ export default props => {
         </Box>
         <SignedOutLink/>
         <SignedInLink/>
-        {/* <CommonButton value='logout'/> */}
       </Toolbar>
     </AppBar>
   );
 };
 
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps)(Navbar)

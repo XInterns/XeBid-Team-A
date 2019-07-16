@@ -2,13 +2,11 @@ import React from 'react';
 import {BrowserRouter,Switch,Route} from 'react-router-dom';
 import {CssBaseline} from '@material-ui/core'
 import { makeStyles} from '@material-ui/core/styles';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from './Components/Layout/Navbar';
 import Sidedrawer from './Components/Layout/Sidedrawer';
 import MainContent from './Components/Layout/MainContent';
-import Footer from './Components/Layout/Footer'
-import SignInDialog from './Components/Common/Dialog';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,14 +30,14 @@ export default props => {
           <NavBar drawerToggle={handleDrawerToggle}/>
 
           <Switch>
-            <Route  path='/signup' component={SignInDialog}/>
+            
           </Switch>
 
           {/*<Sidedrawer drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>*/}
 
           {/*<MainContent/>*/}
 
-          {/*<Footer /> */}
+         
 
         </div>         
       </BrowserRouter>

@@ -2,8 +2,8 @@ import React from 'react'
 import {NavLink} from 'react-router-dom';
 import { makeStyles} from '@material-ui/core/styles';
 
-import CommonButton from '../../Common/Button';
-import Dialog from '../../Common/Dialog';
+import SignUpDialog from '../../Auth/SignUpDialog';
+import SignInDialog from '../../Auth/SignInDialog';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,10 +16,8 @@ export default props => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <CommonButton value='sign in' color='primary'>
-        <NavLink to="/"/>
-      </CommonButton>
-      <Dialog mainText='sign up'/>
+      <SignInDialog mainText='sign in'/>
+      <SignUpDialog mainText='sign up'/>
     </div>
   )
 }
