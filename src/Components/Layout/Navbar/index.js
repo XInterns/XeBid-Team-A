@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 const Navbar= props => {
   const classes = useStyles();
   const {auth}=props;
-  //console.log(auth);
+
   const links = auth.uid ? <SignedInLink/> : <SignedOutLink/>;
   const sideDrawer = auth.uid ? (
         <IconButton
@@ -40,7 +40,7 @@ const Navbar= props => {
         >
           <MenuIcon />
         </IconButton> ) : null;
-        
+
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
@@ -57,7 +57,6 @@ const Navbar= props => {
 };
 
 const mapStateToProps = (state) => {
-  //console.log(state);
   return {
     auth:state.firebase.auth
   }

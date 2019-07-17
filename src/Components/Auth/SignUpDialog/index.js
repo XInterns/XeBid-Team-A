@@ -4,11 +4,13 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {connect} from 'react-redux';
 
 import CommonButton from '../../Common/Button';
 import CreateUserForm from '../../Admin/CreateUsers';
+import {signUp} from '../../../Actions/authActions';
 
-export default function FormDialog(props) {
+const SignUpDialog = (props) => {
   const [values, setValues] = useState({});
 
   const handleChange = (key,value) => {
@@ -17,12 +19,18 @@ export default function FormDialog(props) {
 
   const [open, setOpen] = React.useState(false);
 
-  function handleClickOpen() {
+  const handleClickOpen = () => {
     setOpen(true);
   }
 
-  function handleClose() {
+  const handleClose = () => {
     setOpen(false);
+  }
+
+  const handleSubmit = (e) => {
+    setOpen(false);
+    props.signUp(values)
+    e.preventDefault();
   }
   
   return (
@@ -39,7 +47,7 @@ export default function FormDialog(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleSubmit} color="primary">
             {props.mainText}
           </Button>
         </DialogActions>
@@ -47,3 +55,11 @@ export default function FormDialog(props) {
     </div>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser))
+  }
+}
+
+export default connect(null,mapDispatchToProps)(SignUpDialog)
