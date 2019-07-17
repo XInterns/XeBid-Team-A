@@ -27,12 +27,11 @@ const useStyles = makeStyles(theme => ({
 
 const Navbar= props => {
   const classes = useStyles();
-
-  return (
-    <AppBar position="fixed" className={classes.appBar}>
-      <Toolbar>
-
-        {/* <IconButton
+  const {auth}=props;
+  //console.log(auth);
+  const links = auth.uid ? <SignedInLink/> : <SignedOutLink/>;
+  const sideDrawer = auth.uid ? (
+        <IconButton
           color="inherit"
           aria-label="Open drawer"
           edge="start"
@@ -40,23 +39,27 @@ const Navbar= props => {
           className={classes.menuButton}
         >
           <MenuIcon />
-        </IconButton> */}
+        </IconButton> ) : null;
+        
+  return (
+    <AppBar position="fixed" className={classes.appBar}>
+      <Toolbar>
+        {sideDrawer}
         <Box className={classes.title}>
           <Link to='/'>
             <img src="https://www.ciol.com/wp-content/uploads/2019/04/Xebia-brings-Survey-on-Digitization.jpg" alt="XEBIA LOGO" height="40" width="90" />
           </Link>
         </Box>
-        <SignedOutLink/>
-        <SignedInLink/>
+        {links}
       </Toolbar>
     </AppBar>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  //console.log(state);
   return {
-    
+    auth:state.firebase.auth
   }
 }
 

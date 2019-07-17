@@ -2,7 +2,10 @@ import React from 'react';
 import {BrowserRouter,Switch,Route} from 'react-router-dom';
 import {CssBaseline} from '@material-ui/core'
 import { makeStyles} from '@material-ui/core/styles';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
+import Footer from './Components/Layout/Footer';
 import NavBar from './Components/Layout/Navbar';
 import Sidedrawer from './Components/Layout/Sidedrawer';
 import MainContent from './Components/Layout/MainContent';
@@ -14,7 +17,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default props => {
+const App = props => {
+    const redirect= props.auth.uid? <Redirect to='/admin'/>:<Redirect to='/'/>;
     const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);
   
@@ -30,17 +34,29 @@ export default props => {
           <NavBar drawerToggle={handleDrawerToggle}/>
 
           <Switch>
-            
+            <Route exact path='/' component={() => (
+              <>
+                {redirect}
+                <Footer/>
+              </> 
+            )}/>           
+            <Route path='/admin' component={(props)=> (
+              <>
+                {redirect}
+                <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
+                <MainContent/>
+              </>
+            )}/>            
           </Switch>
-
-          {/*<Sidedrawer drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>*/}
-
-          {/*<MainContent/>*/}
-
-         
-
         </div>         
       </BrowserRouter>
     );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    auth:state.firebase.auth
+  }
+}
+
+export default connect(mapStateToProps)(App);

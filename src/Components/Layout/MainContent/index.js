@@ -1,11 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/core/styles';
 import { Typography, Paper } from '@material-ui/core';
+import {connect} from 'react-redux';
 
 import AddUsers from '../../Admin/CreateUsers';
 import EventSpaceManagement from '../../Admin/EventSpaceManagement';
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,9 +17,9 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
-const MainContent = props =>  {
+const MainContent =  props =>  {
   const classes = useStyles();
-
+  
   const renderContent = option => {
     switch (option){
       case 0:
@@ -45,7 +44,9 @@ const MainContent = props =>  {
 }
 
 const mapStateToProps = state => {
-  return {selectedOption: state.selectedOption};
+  return {
+    selectedOption: state.selectedOption,
+  };
 }
 
 export default connect(mapStateToProps)(MainContent)
