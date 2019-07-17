@@ -1,10 +1,11 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import { Typography, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import {connect} from 'react-redux';
+import {Switch,Route,Redirect} from 'react-router-dom';
 
-import AddUsers from '../../Admin/CreateUsers';
-import EventSpaceManagement from '../../Admin/EventSpaceManagement';
+import UserManagement from '../../Admin/UserManagement';
+import EventManagement from '../../Admin/EventSpaceManagement';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,23 +24,28 @@ const MainContent =  props =>  {
   const renderContent = option => {
     switch (option){
       case 0:
-        return <Typography variant='h3'>Dashboard</Typography>
+        return <Redirect to='/admin/dashboard'/>
       case 1:
-        return <EventSpaceManagement/>
+        return <Redirect to='/admin/event-management'/>
       case 2:
-        return <AddUsers/>
-      case 3:
-        return <Typography variant='h3'>View Users</Typography>
+        return <Redirect to='/admin/user-management'/>
     }
   }
 
   return(
-    <main className={classes.content}>
-      <div className={classes.toolbar} />
-        <Paper className={classes.root}>
-          {renderContent(props.selectedOption)}
-        </Paper>
-    </main>
+    <>
+      {renderContent(props.selectedOption)}
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+          <Paper className={classes.root}>
+            <Switch>
+              <Route path='/admin/dashboard' component={EventManagement}/>
+              <Route path='/admin/event-management' component={EventManagement}/>
+              <Route path='/admin/user-management' component={UserManagement}/>
+              </Switch>
+          </Paper>        
+      </main>
+    </>
   );
 }
 

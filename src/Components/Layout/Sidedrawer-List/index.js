@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {Divider,List,ListItem,ListItemIcon,ListItemText, Collapse} from '@material-ui/core/';
-import {Dashboard as DashboardIcon, People as PeopleIcon, Event as EventIcon, Visibility as ViewIcon, AddCircle, ExpandLess, ExpandMore} from '@material-ui/icons/';
+import {Dashboard as DashboardIcon, People as PeopleIcon, Event as EventIcon} from '@material-ui/icons/';
 
 import {selectOption} from '../../../Actions';
 
@@ -54,44 +54,22 @@ const SidedrawerList = props => {
           <ListItemIcon>
             <EventIcon/>
           </ListItemIcon>
-          <ListItemText primary="Event Space Mgmt." />
+          <ListItemText primary="Events Management" />
         </ListItem>
 
-        <ListItem button onClick={handleClick}>
+        <ListItem
+          button
+          selected={selectedIndex === 2}
+          onClick={event => handleListItemClick(event, 2)}
+        >
           <ListItemIcon>
             <PeopleIcon/>
           </ListItemIcon>
-          <ListItemText primary="User Mgmt." />
-        {open ? <ExpandLess /> : <ExpandMore />}
+          <ListItemText primary="Users Management " />
         </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem 
-            button 
-            className={classes.nested}
-            selected={selectedIndex === 2}
-            onClick={event => handleListItemClick(event, 2)}
-            >
-              <ListItemIcon>
-                <AddCircle/>
-              </ListItemIcon>
-              <ListItemText primary="Add Users" />
-            </ListItem>
-            <ListItem 
-            button 
-            className={classes.nested}
-            selected={selectedIndex === 3}
-            onClick={event => handleListItemClick(event, 3)}
-            >
-              <ListItemIcon>
-                <ViewIcon/>
-              </ListItemIcon>
-              <ListItemText primary="View Users" />
-            </ListItem>
-          </List>
-        </Collapse>
-      </List>
+
         <Divider />
+      </List>
     </div>
   );
 }
