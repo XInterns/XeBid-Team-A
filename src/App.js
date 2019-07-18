@@ -10,7 +10,7 @@ import NavBar from './Components/Layout/Navbar';
 import Sidedrawer from './Components/Layout/Sidedrawer';
 import MainContent from './Components/Layout/MainContent';
 import LandingPage from './Components/LandingPage/LandingPage';
-import Cards from './Components';
+// import Cards from './Components';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,7 +39,6 @@ const App = props => {
               <>
                 {redirect}
 
-                <Cards/>
                 <LandingPage/>
                 <Footer/>
               </> 
