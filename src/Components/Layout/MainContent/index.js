@@ -6,6 +6,7 @@ import {Switch,Route,Redirect} from 'react-router-dom';
 
 import UserManagement from '../../Admin/UserManagement';
 import EventManagement from '../../Admin/EventSpaceManagement';
+import CardDisplay from '../../Common/CardDisplay';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,7 +40,7 @@ const MainContent =  props =>  {
         <div className={classes.toolbar} />
           <Paper className={classes.root}>
             <Switch>
-              <Route path='/admin/dashboard' component={EventManagement}/>
+              <Route path='/admin/dashboard' component={CardDisplay}/>
               <Route path='/admin/event-management' component={EventManagement}/>
               <Route path='/admin/user-management' component={UserManagement}/>
               </Switch>
