@@ -9,7 +9,8 @@ import Footer from './Components/Layout/Footer';
 import NavBar from './Components/Layout/Navbar';
 import Sidedrawer from './Components/Layout/Sidedrawer';
 import MainContent from './Components/Layout/MainContent';
-
+import LandingPage from './Components/LandingPage/LandingPage';
+import Cards from './Components';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,6 +38,9 @@ const App = props => {
             <Route exact path='/' component={() => (
               <>
                 {redirect}
+
+                <Cards/>
+                <LandingPage/>
                 <Footer/>
               </> 
             )}/>           
