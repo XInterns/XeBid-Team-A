@@ -18,7 +18,23 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const App = props => {
-    const redirect= props.auth.uid? <Redirect to='/admin'/>:<Redirect to='/'/>;
+
+    const route = (role) => {
+      switch (role){
+        case 0:
+          return 'admin';
+        case 1:
+          return 'event-manager';
+        case 2:
+          return 'team-owner';
+        case 3:
+          return 'participant';
+        case 4:
+          return 'audience';
+      }
+    }
+
+    const redirect= props.auth.uid? <Redirect to={`/${route(props.profile.role)}`}/>:<Redirect to='/'/>;
     const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);
   
@@ -30,6 +46,8 @@ const App = props => {
       <BrowserRouter>       
         <div className={classes.root}>
           <CssBaseline />
+
+          {redirect}
 
           <NavBar drawerToggle={handleDrawerToggle}/>
 
@@ -44,9 +62,37 @@ const App = props => {
               <>
                 {redirect}
                 <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
-                <MainContent/>
+                <MainContent url='admin'/>
               </>
-            )}/>            
+            )}/> 
+            <Route path='/event-manager' component={(props)=> (
+              <>
+                {redirect}
+                <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
+                <MainContent url='event-manager'/>
+              </>
+            )}/> 
+            <Route path='/participant' component={(props)=> (
+              <>
+                {redirect}
+                <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
+                <MainContent url='participant'/>
+              </>
+            )}/>  
+            <Route path='/team-owner' component={(props)=> (
+              <>
+                {redirect}
+                <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
+                <MainContent url='team-owner'/>
+              </>
+            )}/> 
+            <Route path='/audience' component={(props)=> (
+              <>
+                {redirect}
+                <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
+                <MainContent url='audience'/>
+              </>
+            )}/>          
           </Switch>
         </div>         
       </BrowserRouter>
@@ -55,7 +101,8 @@ const App = props => {
 
 const mapStateToProps = (state) => {
   return {
-    auth:state.firebase.auth
+    auth:state.firebase.auth,
+    profile:state.firebase.profile
   }
 }
 

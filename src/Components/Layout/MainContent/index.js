@@ -24,11 +24,11 @@ const MainContent =  props =>  {
   const renderContent = option => {
     switch (option){
       case 0:
-        return <Redirect to='/admin/dashboard'/>
+        return <Redirect to={`/${props.url}/dashboard`}/>
       case 1:
-        return <Redirect to='/admin/event-management'/>
+        return <Redirect to={`/${props.url}/event-management`}/>
       case 2:
-        return <Redirect to='/admin/user-management'/>
+        return <Redirect to={`/${props.url}/user-management`}/>
     }
   }
 
@@ -39,9 +39,9 @@ const MainContent =  props =>  {
         <div className={classes.toolbar} />
           <Paper className={classes.root}>
             <Switch>
-              <Route path='/admin/dashboard' component={EventManagement}/>
-              <Route path='/admin/event-management' component={EventManagement}/>
-              <Route path='/admin/user-management' component={UserManagement}/>
+              <Route path={`/${props.url}/dashboard`} component={EventManagement}/>
+              <Route path={`/${props.url}/event-management`} component={EventManagement}/>
+              <Route path={`/${props.url}/user-management`} component={UserManagement}/>
               </Switch>
           </Paper>        
       </main>

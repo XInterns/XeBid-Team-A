@@ -25,9 +25,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
 const Navbar= props => {
   const classes = useStyles();
   const {auth}=props;
+
 
   const links = auth.uid ? <SignedInLink/> : <SignedOutLink/>;
   const sideDrawer = auth.uid ? (
@@ -40,7 +42,7 @@ const Navbar= props => {
         >
           <MenuIcon />
         </IconButton> ) : null;
-
+  
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>

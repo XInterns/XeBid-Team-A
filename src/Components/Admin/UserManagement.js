@@ -1,25 +1,34 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+import {connect} from 'react-redux';
 
-export default function MaterialTableDemo() {
+import {signUp} from '../../Actions/authActions';
+
+const MaterialTableDemo =(props)=> {
   const [state, setState] = React.useState({
     columns: [
-      { title: 'Name', field: 'name' },
-      { title: 'Surname', field: 'surname' },
-      { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
+      { title: 'First Name', field: 'firstName' },
+      { title: 'Last Name', field: 'lastName' },
+      { title: 'Email', field: 'email'},
+      { title: 'Contact', field: 'contact'},
       {
-        title: 'Birth Place',
-        field: 'birthCity',
-        lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+        title: 'Role',
+        field: 'role',
+        lookup: { 0: 'Admin', 2: 'Event Manager',3:'Team Owner',4:'Participant',5:'Audience' },
       },
     ],
     data: [
-      { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+      { firstName: 'Rishabh', 
+        lastName: 'Mishra', 
+        email: 'rishabhismishra@gmail.com', 
+        contact: '8860323649', 
+        role:0 },
       {
-        name: 'Zerya Betül',
-        surname: 'Baran',
-        birthYear: 2017,
-        birthCity: 34,
+        firstName: 'Ameya',
+        lastName: 'Mishra',
+        email: 'rishabh.mishra@bennett.edu.in',
+        contact: '8860323649',
+        role:0
       },
     ],
   });
@@ -35,6 +44,7 @@ export default function MaterialTableDemo() {
             setTimeout(() => {
               resolve();
               const data = [...state.data];
+              props.signUp({...newData,password:'Pass@1028'});
               data.push(newData);
               setState({ ...state, data });
             }, 600);
@@ -61,3 +71,11 @@ export default function MaterialTableDemo() {
     />
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser))
+  }
+}
+
+export default connect(null,mapDispatchToProps)(MaterialTableDemo)
