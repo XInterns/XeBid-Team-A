@@ -16,3 +16,59 @@ padding: 20px;
 height: 60px;
 width: 100%
 }
+
+.icons{
+  display:flex;
+  align-items:center;
+  position:absolute;
+  top:25%;
+  left:47%;
+  transform:translate(-50%,-50%);
+}
+
+.icons li{
+  list-style:none;
+}
+
+.icons li a {
+  width:50px;
+  height:50px;
+  background:#fff;
+  text-align:center;
+   line-height:50px; 
+  font-size:25px;
+  margin:0 4px;
+  display:block;
+  border-radius:50%;
+  position:relative;
+  overflow:hidden;
+  border:3px solid #fff;
+  z-index:1;
+
+}
+.icons li a .fa{
+  position:relative;
+  color: #6C2A57;
+  transition:0.5s;
+
+}
+.icons li a:hover .fa{
+  transform:rotateY(360deg);
+  
+}
+.icons li a:before{
+  content:'';
+  position:absolute;
+  top:100;
+  left:0;
+  width:100%;
+  height:100%;
+  transition:.5s;
+  z-index:2;
+  
+
+}
+.icons li a:hover:before{
+  top:0;
+}
+
