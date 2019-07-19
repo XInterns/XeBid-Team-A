@@ -6,6 +6,7 @@ import {Switch,Route,Redirect} from 'react-router-dom';
 
 import UserManagement from '../../Admin/UserManagement';
 import EventManagement from '../../Admin/EventSpaceManagement';
+import CardDisplay from '../../Common/CardDisplay';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,14 +33,17 @@ const MainContent =  props =>  {
     }
   }
 
+  const redirect = !props.auth.uid? <Redirect to='/'/>:renderContent(props.selectedOption);
+
   return(
     <>
-      {renderContent(props.selectedOption)}
+      {redirect}
+      {/* {renderContent(props.selectedOption)} */}
       <main className={classes.content}>
         <div className={classes.toolbar} />
           <Paper className={classes.root}>
             <Switch>
-              <Route path={`/${props.url}/dashboard`} component={EventManagement}/>
+              <Route path={`/${props.url}/dashboard`} component={CardDisplay}/>
               <Route path={`/${props.url}/event-management`} component={EventManagement}/>
               <Route path={`/${props.url}/user-management`} component={UserManagement}/>
               </Switch>
@@ -52,6 +56,7 @@ const MainContent =  props =>  {
 const mapStateToProps = state => {
   return {
     selectedOption: state.selectedOption,
+    auth:state.firebase.auth,
   };
 }
 

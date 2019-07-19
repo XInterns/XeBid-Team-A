@@ -9,7 +9,7 @@ import Footer from './Components/Layout/Footer';
 import NavBar from './Components/Layout/Navbar';
 import Sidedrawer from './Components/Layout/Sidedrawer';
 import MainContent from './Components/Layout/MainContent';
-
+;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,6 +55,8 @@ const App = props => {
             <Route exact path='/' component={() => (
               <>
                 {redirect}
+
+                {/* <LandingPage/> */}
                 <Footer/>
               </> 
             )}/>           
@@ -67,28 +69,28 @@ const App = props => {
             )}/> 
             <Route path='/event-manager' component={(props)=> (
               <>
-                {redirect}
+
                 <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
                 <MainContent url='event-manager'/>
               </>
             )}/> 
             <Route path='/participant' component={(props)=> (
               <>
-                {redirect}
+  
                 <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
                 <MainContent url='participant'/>
               </>
             )}/>  
             <Route path='/team-owner' component={(props)=> (
               <>
-                {redirect}
+ 
                 <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
                 <MainContent url='team-owner'/>
               </>
             )}/> 
             <Route path='/audience' component={(props)=> (
               <>
-                {redirect}
+    
                 <Sidedrawer {...props} drawerToggle={handleDrawerToggle} mobileOpenCheck={mobileOpen}/>
                 <MainContent url='audience'/>
               </>
